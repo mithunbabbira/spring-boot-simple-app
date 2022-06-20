@@ -64,4 +64,12 @@ public class DepartmentServiceIml  implements DepartmentService{
     public Department fetchDepartmentByName(String departmentName) {
         return departmentRepository.findByDepartmentNameIgnoreCase(departmentName);
     }
+
+    @Override
+    public Department softDelete(Long departmentId) {
+
+        Department depDB = departmentRepository.findById(departmentId).get();
+        depDB.setIsDeleted(true);
+        return departmentRepository.save(depDB);
+    }
 }

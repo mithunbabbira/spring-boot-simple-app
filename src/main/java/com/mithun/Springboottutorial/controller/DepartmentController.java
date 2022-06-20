@@ -48,6 +48,15 @@ public class DepartmentController {
         return "Department deleted Successfully";
     }
 
+
+
+
+    @PutMapping("/departments/soft/{id}")
+    public Department softDelete(@PathVariable("id")  Long departmentId){
+        return departmentService.softDelete(departmentId);
+
+    }
+
     @PutMapping("/departments/{id}")
     public Department updateDepartment(@PathVariable("id")  Long departmentId,
                                        @RequestBody Department department){
